@@ -1,61 +1,62 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, Star, MapPin, Coffee, UtensilsCrossed } from 'lucide-react';
+import { ChevronLeft, Star, MapPin, Coffee, UtensilsCrossed,Search,
+  Filter,
+  Clock ,Phone,Users,ChevronRight,Calendar,X,TrendingUp,ArrowRight} from 'lucide-react';
 
-// Sample data
 const restaurants = [
   {
     id: 1,
     name: 'Pista House',
-    rating: 4.5,
+    rating: 4.9,
     address: 'Gandimaisamma',
     image: 'https://images.jdmagicbox.com/v2/comp/hyderabad/f1/040pxx40.xx40.180405190502.d5f1/catalogue/pista-house-family-restaurant-bakery-and-banquet-hall-jntu-kukatpally-hyderabad-restaurants-7mj92ojs13.jpg' // Replace with actual image URL
   },
   {
     id: 2,
     name: 'Flamingo Resto',
-    rating: 4.2,
+    rating: 4.7,
     address: 'ORR,Dundigal',
     image: 'https://lh5.googleusercontent.com/p/AF1QipMWb4JPTyqjc9n9FqUKLVgG7zqmat4xlOuO1F4X=w390-h262-n-k-no', // Replace with actual image URL
   },
   {
     id: 3,
     name: 'My Village Kitchen & Jail Mandi',
-    rating: 4.8,
+    rating: 4.6,
     address: 'Bowrampet,Dundigal',
     image: 'https://lh3.googleusercontent.com/p/AF1QipOXYLvdJvxsIUA04EtwEWobok4j4V89n5KCFvuI=s1360-w1360-h1020'
   },
   {
     id: 4,
     name: 'Milan Dhaba',
-    rating: 4.6,
+    rating: 4.4,
     address: 'Gundla Pochampally',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZipqdjDa9cCmMT4C8QbLyE8xxyC65iIAohw&s'
   },
   {
     id: 5,
     name: 'Lazeez Arabian mandi',
-    rating: 4.7,
+    rating: 4.4,
     address: 'Near gandimaisamma X-roads',
     image: 'https://lh3.googleusercontent.com/p/AF1QipMoZJfWphbRkWK3mi3M7DF6WTlzvwi2PaT34L5s=s1360-w1360-h1020'
   },
   {
     id: 6,
     name: 'NV Grand Family Restaurant',
-    rating: 4.9,
+    rating: 4.3,
     address: 'Dommarapochampally',
     image: 'https://lh5.googleusercontent.com/p/AF1QipN0z937seBVcaWrgE-VJVQHHw5LxyaRvagT3mr1=w195-h130-n-k-no', // Replace with actual image URL
   },
   {
     id: 7,
     name: 'WhiteSand Kitchen and restro',
-    rating: 4.3,
+    rating: 4.2,
     address: 'Dundigal',
     image: 'https://lh5.googleusercontent.com/p/AF1QipMdKhzvj0tJRW7HXHailSC-RDnT7qj2K3zruIU9=w390-h262-n-k-no', // Replace with actual image URL
   },
   {
     id: 8,
     name: 'Ujwala Grand',
-    rating: 4.4,
+    rating: 4.1,
     address: 'Gandi Maisamma, Domara Pocham Pally',
     image: 'https://lh3.googleusercontent.com/p/AF1QipPAXhk63tWvYjwjS_yKXW4zvlO-NTgzAnfPmQdo=s1360-w1360-h1020', // Replace with actual image URL
   },
@@ -153,30 +154,32 @@ const WelcomeScreen = ({ currentStep, onNext }) => {
     {
       title: "Welcome to Food Explorer!",
       subtitle: "Your gateway to culinary adventures",
-      icon: <Coffee className="w-24 h-24 text-orange-500 mx-auto mb-6" />,
-      buttonText: "Next"
+      icon: <Coffee className="w-24 h-24 text-orange-500 mx-auto mb-6 animate-bounce" />,
+      buttonText: "Let's Begin"
     },
     {
       title: "Discover Amazing Restaurants",
       subtitle: "Find the best restaurants near you with just a few taps",
-      icon: <UtensilsCrossed className="w-24 h-24 text-orange-500 mx-auto mb-6" />,
+      icon: <UtensilsCrossed className="w-24 h-24 text-orange-500 mx-auto mb-6 animate-pulse" />,
       buttonText: "Next"
     },
     {
       title: "Ready to Start?",
       subtitle: "Your food adventure begins here",
-      icon: <MapPin className="w-24 h-24 text-orange-500 mx-auto mb-6" />,
-      buttonText: "Enter App"
+      icon: <MapPin className="w-24 h-24 text-orange-500 mx-auto mb-6 animate-bounce" />,
+      buttonText: "Explore Now"
     }
   ];
 
   const currentScreen = welcomeScreens[currentStep];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-6">
-      <div className="text-center mb-8 animate-fade-in">
-        {currentScreen.icon}
-        <h1 className="text-4xl font-bold text-orange-500 mb-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 flex flex-col items-center justify-center p-6">
+      <div className="text-center mb-8 transform transition-all duration-500 ease-out">
+        <div className="mb-8">
+          {currentScreen.icon}
+        </div>
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent mb-4">
           {currentScreen.title}
         </h1>
         <p className="text-gray-600 text-xl">
@@ -185,7 +188,7 @@ const WelcomeScreen = ({ currentStep, onNext }) => {
       </div>
       <button
         onClick={onNext}
-        className="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
+        className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
       >
         {currentScreen.buttonText}
       </button>
@@ -193,34 +196,36 @@ const WelcomeScreen = ({ currentStep, onNext }) => {
   );
 };
 
-// Location permission modal
 const LocationPermission = ({ onAllow, onDeny }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 animate-fade-in">
-      <div className="bg-white rounded-lg p-6 max-w-md w-full">
-        <MapPin className="w-16 h-16 text-orange-500 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-center mb-4">Location Access</h2>
-        <p className="text-gray-600 text-center mb-6">
-          Allow us to access your location to find restaurants near you
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl p-8 max-w-md w-full transform transition-all duration-300 scale-100 shadow-2xl">
+        <div className="bg-orange-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+          <MapPin className="w-12 h-12 text-orange-500" />
+        </div>
+        <h2 className="text-3xl font-bold text-center mb-4">Enable Location</h2>
+        <p className="text-gray-600 text-center mb-8">
+          Let us find the best restaurants near you for a delightful dining experience
         </p>
         <div className="flex justify-center gap-4">
           <button
             onClick={onAllow}
-            className="bg-orange-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-orange-600 transition-colors"
+            className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-full font-semibold hover:scale-105 transition-all duration-300"
           >
-            Allow
+            Enable Location
           </button>
           <button
             onClick={onDeny}
-            className="bg-gray-200 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+            className="bg-gray-100 text-gray-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-all duration-300"
           >
-            Deny
+            Skip
           </button>
         </div>
       </div>
     </div>
   );
 };
+
 
 // Loading screen
 const LoadingScreen = () => {
@@ -232,71 +237,498 @@ const LoadingScreen = () => {
   );
 };
 
-// Restaurant list component
-const RestaurantList = ({ onSelectRestaurant }) => {
+const SearchOverlay = ({ onClose,onSelectRestaurant }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const handleRestaurantClick = (restaurant) => {
+    onSelectRestaurant(restaurant);
+    onClose();
+  };
+  // Sample data for suggestions
+  const recentSearches = [
+    "Paradise Biryani",
+    "Shah Ghouse",
+    "Bawarchi",
+    "Cafe 555"
+  ];
+
+  const popularLocations = [
+    "Gachibowli",
+    "Hitech City",
+    "Madhapur",
+    "Kukatpally",
+    "Jubilee Hills"
+  ];
+
+  const trendingRestaurants = [
+    { name: "Pista House", location: "Gandimaisamma", rating: "4.9" },
+    { name: "Flamingo Resto", location: "ORR,Dundigal", rating: "4.7" },
+    { name: "My Village Kitchen", location: "Bowrampet", rating: "4.6" }
+  ];
+
+  // Filter suggestions based on search query
+  const filteredRestaurants = restaurants.filter(restaurant => 
+    restaurant.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    restaurant.address.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-6xl mx-auto p-6">
-        <h1 className="text-3xl font-bold text-orange-500 mb-8">Nearby Restaurants</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {restaurants.map((restaurant) => (
-            <div
-              key={restaurant.id}
-              onClick={() => onSelectRestaurant(restaurant)}
-              className="bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow animate-fade-in"
+    <div className="fixed inset-0 bg-white z-50">
+      {/* Search Header */}
+      <div className="border-b border-gray-200">
+        <div className="max-w-4xl mx-auto p-4">
+          <div className="relative flex items-center">
+            <Search className="absolute left-4 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search for restaurants or locations..."
+              className="w-full pl-12 pr-10 py-3 bg-gray-50 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              autoFocus
+            />
+            <button 
+              onClick={onClose}
+              className="absolute right-4 p-1 hover:bg-gray-100 rounded-full"
             >
-              <img src={restaurant.image} alt={restaurant.name} className="w-full h-48 object-cover rounded-t-lg" />
-              <div className="p-6">
-                <h2 className="text-xl font-semibold mb-2">{restaurant.name}</h2>
-                <p className="text-gray-600 mb-2">{restaurant.cuisine}</p>
-                <p className="text-gray-600 mb-2">Rating: {restaurant.rating}</p>
-                <p className="text-gray-600">{restaurant.address}</p>
+              <X className="w-5 h-5 text-gray-500" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Search Results */}
+      <div className="max-w-4xl mx-auto p-4">
+        {searchQuery ? (
+          // Show filtered results when searching
+          <div className="space-y-4">
+            {filteredRestaurants.map((restaurant) => (
+              <div 
+                key={restaurant.id}
+                className="flex items-center p-4 hover:bg-orange-50 rounded-xl cursor-pointer transition-colors"
+                onClick={() => handleRestaurantClick(restaurant)}
+              >
+                <div className="w-16 h-16 rounded-lg overflow-hidden mr-4">
+                  <img 
+                    src={restaurant.image} 
+                    alt={restaurant.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-800">{restaurant.name}</h3>
+                  <p className="text-sm text-gray-600">{restaurant.address}</p>
+                  <div className="flex items-center mt-1">
+                    <span className="text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded">
+                      {restaurant.rating} ★
+                    </span>
+                  </div>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gray-400" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          // Show suggestions when not searching
+          <div className="space-y-8">
+            {/* Recent Searches */}
+            <div>
+              <h3 className="text-gray-500 text-sm font-medium mb-3">Recent Searches</h3>
+              <div className="flex flex-wrap gap-2">
+                {recentSearches.map((search, index) => (
+                  <button
+                    key={index}
+                    className="flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm hover:bg-gray-200 transition-colors"
+                  >
+                    <Clock className="w-4 h-4 mr-2 text-gray-500" />
+                    {search}
+                  </button>
+                ))}
               </div>
             </div>
+
+            {/* Popular Locations */}
+            <div>
+              <h3 className="text-gray-500 text-sm font-medium mb-3">Popular Locations</h3>
+              <div className="flex flex-wrap gap-2">
+                {popularLocations.map((location, index) => (
+                  <button
+                    key={index}
+                    className="flex items-center px-4 py-2 bg-gray-100 rounded-full text-sm hover:bg-gray-200 transition-colors"
+                  >
+                    <MapPin className="w-4 h-4 mr-2 text-gray-500" />
+                    {location}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Trending Restaurants */}
+            <div>
+              <h3 className="text-gray-500 text-sm font-medium mb-3">Trending Restaurants</h3>
+              <div className="space-y-3">
+                {trendingRestaurants.map((restaurant, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center p-3 hover:bg-orange-50 rounded-xl cursor-pointer transition-colors"
+                  >
+                    <TrendingUp className="w-5 h-5 text-orange-500 mr-3" />
+                    <div>
+                      <h4 className="font-medium text-gray-800">{restaurant.name}</h4>
+                      <p className="text-sm text-gray-600">{restaurant.location}</p>
+                    </div>
+                    <div className="ml-auto">
+                      <span className="text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded">
+                        {restaurant.rating} ★
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// Restaurant list component
+const TableReservation = ({ restaurant, onClose }) => {
+  const [step, setStep] = useState(1);
+  const [reservation, setReservation] = useState({
+    date: '',
+    time: '',
+    guests: 2,
+    name: '',
+    phone: '',
+    specialRequests: ''
+  });
+
+  const timeSlots = [
+    '11:00 AM', '11:30 AM', '12:00 PM', '12:30 PM', 
+    '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
+    '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM',
+    '9:00 PM', '9:30 PM', '10:00 PM'
+  ];
+
+  const handleSubmit = () => {
+    console.log('Reservation details:', reservation);
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div className="p-6">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-gray-800">Table Reservation</h2>
+            <button 
+              onClick={onClose}
+              className="text-gray-500 hover:text-gray-700"
+            >
+              ×
+            </button>
+          </div>
+
+          {step === 1 && (
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Select Date</label>
+                <div className="relative">
+                  <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="date"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    value={reservation.date}
+                    onChange={(e) => setReservation({...reservation, date: e.target.value})}
+                    min={new Date().toISOString().split('T')[0]}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Select Time</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {timeSlots.map((time) => (
+                    <button
+                      key={time}
+                      className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
+                        reservation.time === time
+                          ? 'bg-orange-500 text-white'
+                          : 'bg-orange-50 text-orange-500 hover:bg-orange-100'
+                      }`}
+                      onClick={() => setReservation({...reservation, time})}
+                    >
+                      {time}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Number of Guests</label>
+                <div className="relative">
+                  <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <select
+                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    value={reservation.guests}
+                    onChange={(e) => setReservation({...reservation, guests: e.target.value})}
+                  >
+                    {[1,2,3,4,5,6,7,8,9,10].map(num => (
+                      <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setStep(2)}
+                className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2"
+              >
+                Next
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
+
+          {step === 2 && (
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                <input
+                  type="text"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  value={reservation.name}
+                  onChange={(e) => setReservation({...reservation, name: e.target.value})}
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <input
+                    type="tel"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                    value={reservation.phone}
+                    onChange={(e) => setReservation({...reservation, phone: e.target.value})}
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Special Requests (Optional)</label>
+                <textarea
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                  value={reservation.specialRequests}
+                  onChange={(e) => setReservation({...reservation, specialRequests: e.target.value})}
+                  placeholder="Any special requests or preferences?"
+                  rows={3}
+                />
+              </div>
+
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setStep(1)}
+                  className="w-1/2 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all"
+                >
+                  Back
+                </button>
+                <button
+                  onClick={handleSubmit}
+                  className="w-1/2 bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition-all"
+                >
+                  Confirm Reservation
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Reservation Summary */}
+        {reservation.date && reservation.time && (
+          <div className="border-t border-gray-100 p-6 bg-orange-50">
+            <h3 className="font-semibold text-gray-800 mb-2">Reservation Summary</h3>
+            <div className="text-sm text-gray-600 space-y-1">
+              <p>Date: {reservation.date}</p>
+              <p>Time: {reservation.time}</p>
+              <p>Guests: {reservation.guests}</p>
+              <p>Restaurant: {restaurant?.name}</p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+const RestaurantList = ({ onSelectRestaurant }) => {
+  const [showSearch, setShowSearch] = useState(false);
+  const handleSearchRestaurantSelect = (restaurant) => {
+    onSelectRestaurant(restaurant);
+    setShowSearch(false);
+  };
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
+    <div className="max-w-6xl mx-auto p-6">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+          Nearby Restaurants
+        </h1>
+        <div className="flex gap-4">
+          <button 
+            onClick={() => setShowSearch(true)}
+            className="bg-white p-2 rounded-full shadow-md hover:shadow-lg transition-all"
+          >
+            <Search className="w-6 h-6 text-orange-500" />
+          </button>
+          <button className="bg-white p-2 rounded-full shadow-md hover:shadow-lg transition-all">
+            <Filter className="w-6 h-6 text-orange-500" />
+          </button>
+        </div>
+      </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {restaurants.map((restaurant) => (
+            <RestaurantCard 
+              key={restaurant.id}
+              restaurant={restaurant}
+              onClick={() => onSelectRestaurant(restaurant)}
+            />
           ))}
+        </div>
+        {showSearch && <SearchOverlay onClose={() => setShowSearch(false)}
+        onSelectRestaurant={handleSearchRestaurantSelect} />}
+      </div>
+    </div>
+  );
+};
+
+const RestaurantCard = ({ restaurant, onClick }) => {
+  return (
+    <div
+      onClick={onClick}
+      className="group bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+    >
+      <div className="relative">
+        <img src={restaurant.image} alt={restaurant.name} className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105" />
+        <div className="absolute top-4 right-4 bg-white rounded-full px-3 py-1 flex items-center shadow-lg">
+          <Star className="w-4 h-4 text-orange-500 mr-1" />
+          <span className="font-semibold">{restaurant.rating}</span>
+        </div>
+      </div>
+      <div className="p-6">
+        <h2 className="text-xl font-bold mb-2 text-gray-800">{restaurant.name}</h2>
+        <div className="flex items-center text-gray-600 mb-2">
+          <MapPin className="w-4 h-4 mr-1" />
+          <p className="text-sm">{restaurant.address}</p>
+        </div>
+        <div className="flex items-center text-gray-600">
+          <Clock className="w-4 h-4 mr-1" />
+          <p className="text-sm">20-30 min</p>
         </div>
       </div>
     </div>
   );
 };
 
-// Restaurant menu component
 const RestaurantMenu = ({ restaurant, onBack }) => {
+  const [showReservation, setShowReservation] = useState(false);
   const menu = menuItems[restaurant.id] || [];
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  const categories = ['All', 'Starters', 'Main Course', 'Desserts', 'Beverages'];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto p-6">
-        <button
-          onClick={onBack}
-          className="flex items-center text-orange-500 mb-6 hover:text-orange-600 transition-colors"
-        >
-          <ChevronLeft className="w-5 h-5 mr-1" />
-          Back to restaurants
-        </button>
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h1 className="text-3xl font-bold text-orange-500 mb-2">{restaurant.name}</h1>
-          <div className="flex items-center gap-4 text-gray-600">
-            <span>{restaurant.cuisine}</span>
-            <span>•</span>
-            <div className="flex items-center">
-              <Star className="w-4 h-4 text-orange-500 mr-1" />
-              {restaurant.rating}
-            </div>
-          </div>
-        </div>
-        <div className="grid gap-6">
-          {menu.map((item, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6 animate-fade-in">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">{item.dishName}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+    <div className="max-w-4xl mx-auto p-6">
+    <div className="flex justify-between items-center mb-6">
+      <button
+        onClick={onBack}
+        className="flex items-center text-orange-500 hover:text-orange-600 transition-colors bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg"
+      >
+        <ChevronLeft className="w-5 h-5 mr-1" />
+        Back to restaurants
+      </button>
+  
+      <button
+        onClick={() => setShowReservation(true)}
+        className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all flex items-center gap-2"
+      >
+        <Calendar className="w-5 h-5" />
+        Reserve Table
+      </button>
+    </div>
+
+
+          {showReservation && (
+            <TableReservation restaurant={restaurant} onClose={() => setShowReservation(false)} />
+          )}
+
+
+        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+          <div className="relative h-48 -mt-6 -mx-6 mb-6">
+            <img src={restaurant.image} alt={restaurant.name} className="w-full h-full object-cover rounded-t-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-t-2xl"></div>
+            <div className="absolute bottom-4 left-6 text-white">
+              <h1 className="text-4xl font-bold mb-2">{restaurant.name}</h1>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center">
+                  <Star className="w-5 h-5 text-orange-500 mr-1" />
+                  <span className="font-semibold">{restaurant.rating}</span>
                 </div>
-                <span className="font-semibold text-orange-500">₹{item.price}</span>
+                <span>•</span>
+                <span>{restaurant.address}</span>
               </div>
             </div>
+          </div>
+
+          <div className="flex gap-4 overflow-x-auto pb-4 mb-6 scrollbar-hide">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category.toLowerCase())}
+                className={`px-4 py-2 rounded-full whitespace-nowrap transition-all ${
+                  selectedCategory === category.toLowerCase()
+                    ? 'bg-orange-500 text-white'
+                    : 'bg-orange-100 text-orange-500 hover:bg-orange-200'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+
+
+          </div>
+        </div>
+
+        <div className="grid gap-6">
+          {menu.map((item, index) => (
+            <MenuItem key={index} item={item} />
           ))}
+        </div>
+      </div>
+  );
+};
+
+const MenuItem = ({ item }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      className="bg-white rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-lg"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="flex justify-between items-start">
+        <div className="flex-1">
+          <h3 className="text-xl font-bold mb-2 text-gray-800">{item.dishName}</h3>
+          <p className="text-gray-600 text-sm">{item.description}</p>
+        </div>
+        <div className={`transform transition-all duration-300 ${isHovered ? 'scale-110' : ''}`}>
+          <span className="bg-orange-100 text-orange-500 px-4 py-2 rounded-full font-bold">
+            ₹{item.price}
+          </span>
         </div>
       </div>
     </div>
